@@ -1,38 +1,68 @@
-📌 Social Media Feed Simulation
-A simple social media feed system implemented in Java, utilizing hash tables for user management and linked lists for post and comment handling.
+# Social Media Feed (Java Project)
 
-🚀 Features
-✅ User Management: Create an account, login with user ID and password.
-✅ Post System: Add and delete posts.
-✅ Like System: Like and unlike posts.
-✅ Comment System: Add and delete comments.
-✅ Feed Display: View all user posts along with comments and likes.
-✅ Dynamic Hash Table: Resizes dynamically when load factor exceeds 0.7.
+## Introduction
+This project is a simple text-based social media feed implemented in Java using hash tables and linked lists. Users can create accounts, add posts, like and comment on posts, and view all feeds.
 
-🛠 Tech Stack
-Java (Core Java, Data Structures)
-Hash Table (for user storage)
-Linked List (for posts and comments)
+## Features
+- **User Management:** Users can create accounts, log in, and manage their posts.
+- **Post System:** Users can add, delete, and view their posts.
+- **Like System:** Users can like or remove their like from posts.
+- **Comment System:** Users can comment on posts and delete their own comments.
+- **Feed Display:** Users can view their own posts and all users' posts.
 
-📦 Social-Media-Feed
- ┣ 📜 Main.java           # Entry point of the application
- ┣ 📜 UserHashTable.java  # Hash table implementation for users
- ┣ 📜 User.java           # User class with post management
- ┣ 📜 Post.java           # Post class with like/comment system
- ┣ 📜 Comment.java        # Comment handling
- ┗ 📜 README.md           # Project documentation
+## Data Structures Used
+- **Hash Table:** Used to store users efficiently.
+- **Linked List:** Used to manage posts and comments.
+- **Dynamic Resizing:** The hash table resizes when 70% full to maintain efficiency.
 
-📌 Usage
-Run the program and select:
-1 to Login
-2 to Create Account
-3 to Exit
-If logged in:
-Add posts, like/unlike, comment, and delete posts/comments.
-View all users' feeds with comments and likes.
+## Classes Overview
+### `Comment`
+Represents a comment on a post.
+- `text`: The comment text.
+- `userId`: The user who posted the comment.
+- `next`: Pointer to the next comment.
 
-📝 To-Do (Future Improvements)
-🔹 Encrypt passwords instead of storing them as plain text.
-🔹 Improve the UI with a graphical interface (Swing/JavaFX).
-🔹 Implement a database (MySQL or SQLite) for persistence.
+### `Post`
+Represents a social media post.
+- `caption`: The post content.
+- `likes`: Count of likes.
+- `likedBy`: Array tracking user IDs who liked the post.
+- `commentHead`: Pointer to the first comment.
+- `next`: Pointer to the next post.
+
+### `User`
+Represents a user account.
+- `userId`: Unique ID.
+- `password`: User password.
+- `postHead`: Head of the linked list of posts.
+
+### `UserNode`
+Node structure for hash table chaining.
+- `user`: The user data.
+- `next`: Pointer to the next node in case of collision.
+
+### `UserHashTable`
+Stores and manages users.
+- `table`: Array of user nodes.
+- `addUser(int userId, String password)`: Adds a new user.
+- `getUser(int userId)`: Retrieves a user by ID.
+- `displayAllFeeds()`: Displays all posts and comments.
+- **Resizing Logic:** Doubles size if more than 70% full.
+
+### User Menu Options
+- `1. Add Post` - Create a new post.
+- `2. Like or Comment` - Like, comment, delete comment, or remove like.
+- `3. View Feed` - View your posts.
+- `4. View All Feeds` - View all users' posts and interactions.
+- `5. Delete Post` - Remove one of your posts.
+- `6. Logout` - Log out of the system.
+
+## Future Enhancements
+- Implement a **Graphical User Interface (GUI)**.
+- Allow **password encryption** for better security.
+- Improve **data persistence** with file storage or a database.
+- Optimize memory usage in `likedBy` array.
+
+## Conclusion
+This project is a great introduction to implementing hash tables, linked lists, and user interactions in Java. It provides a basic but functional social media feed system that can be expanded and optimized further.
 
